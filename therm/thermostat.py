@@ -1,26 +1,16 @@
-import time
-
-
-class ThermostatException(Exception):
-    pass
-
-
-class Clock(object):
-
-    @classmethod
-    def time(cls):
-        return time.time()
-
 class Thermostat(object):
-    heater = None
     thermometer = None
     clock = None
 
-    def __init__(self, heater, thermometer, clock=None):
-        self.heater = heater
+    def __init__(self, _heater, thermometer, clock=None):
         self.thermometer = thermometer
         self.available_modes = ['off', 'on', 'auto']
         self.current_mode = 'off'
+
+        if _heater:
+            self.heater = _heater
+        else:
+            self.heater = HeaterControl()
 
         if clock:
             self.clock = clock
@@ -32,7 +22,12 @@ class Thermostat(object):
         self.threshold_high = None
 
     def iterate(self):
-        pass
+        room_temp = self.get_room_temperature()
+        if room_temp < self.threshold_low:
+            self.heater.set_to_on(True)
+        if room_temp > self.threshold_high:
+            self.heater.set_to_on(False)
+        self.heater.iterate()
 
     def get_heater_is_on(self):
         return self.heater.is_on()

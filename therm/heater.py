@@ -1,7 +1,6 @@
 import logging
 
-from thermostat import Clock
-from thermostat import ThermostatException
+from helpers import Clock, ThermostatException
 
 
 class HeaterControl(object):

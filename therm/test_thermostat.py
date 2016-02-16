@@ -1,8 +1,12 @@
 import random
+import logging
 from unittest import TestCase
 
-from thermostat import *
+from helpers import ThermostatException
+from thermostat import Thermostat
 from test_heaterControl import TestClock
+
+logging.basicConfig(level=logging.DEBUG)
 
 
 class TestThermometer(object):
@@ -26,7 +30,8 @@ class TestHeater(object):
                 raise ThermostatException("Heater not allowed to turn off now")
             self._is_turned_on = False
 
-
+    def iterate(self):
+        pass
 
 
 class TestThermostat(TestCase):
