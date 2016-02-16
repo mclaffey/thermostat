@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6034e1ab-80b9-48c8-8b59-dbe67e8ef618" name="Default" comment="" />
+    <list default="true" id="6034e1ab-80b9-48c8-8b59-dbe67e8ef618" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/thermostat/thermostat.py" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/thermostat/heater.py" afterPath="$PROJECT_DIR$/thermostat/heater.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/thermostat/test_heaterControl.py" afterPath="$PROJECT_DIR$/thermostat/test_heaterControl.py" />
+    </list>
     <ignored path="thermostat.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,18 +26,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="thermostat.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/thermostat/thermostat.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.13392857">
-              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="__init__.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/thermostat/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -43,12 +36,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="heater.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="heater.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/thermostat/heater.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="0.73660713">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#14#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -57,8 +52,10 @@
         <entry file="file://$PROJECT_DIR$/thermostat/test_heaterControl.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
+              <caret line="88" column="24" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="24" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -72,14 +69,17 @@
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/thermostat/test_thermostat.py" />
-        <option value="$PROJECT_DIR$/thermostat/test_heaterControl.py" />
-        <option value="$PROJECT_DIR$/thermostat/heater.py" />
         <option value="$PROJECT_DIR$/thermostat/thermostat.py" />
         <option value="$PROJECT_DIR$/thermostat/__init__.py" />
+        <option value="$PROJECT_DIR$/thermostat/test_heaterControl.py" />
+        <option value="$PROJECT_DIR$/thermostat/heater.py" />
       </list>
     </option>
   </component>
@@ -89,7 +89,7 @@
     <option name="width" value="1276" />
     <option name="height" value="778" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
     <OptionsSetting value="true" id="Remove" />
     <OptionsSetting value="true" id="Checkout" />
@@ -202,6 +202,67 @@
       <option name="METHOD_NAME" value="" />
       <option name="FOLDER_NAME" value="" />
       <option name="TEST_TYPE" value="TEST_SCRIPT" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestHeaterControl.test_turn_on" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/thermostat" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="thermostat" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/thermostat/test_heaterControl.py" />
+      <option name="CLASS_NAME" value="TestHeaterControl" />
+      <option name="METHOD_NAME" value="test_turn_on" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
+      <option name="PATTERN" value="" />
+      <option name="USE_PATTERN" value="false" />
+      <option name="PUREUNITTEST" value="true" />
+      <option name="PARAMS" value="" />
+      <option name="USE_PARAM" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="heater" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/thermostat" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="thermostat" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/thermostat/heater.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <method />
+    </configuration>
+    <configuration default="false" name="Unittest TestHeaterControl.test_dont_cycle_off_heater_too_quickly" type="tests" factoryName="Unittests" temporary="true" nameIsGenerated="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/thermostat" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="thermostat" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/thermostat/test_heaterControl.py" />
+      <option name="CLASS_NAME" value="TestHeaterControl" />
+      <option name="METHOD_NAME" value="test_dont_cycle_off_heater_too_quickly" />
+      <option name="FOLDER_NAME" value="" />
+      <option name="TEST_TYPE" value="TEST_METHOD" />
       <option name="PATTERN" value="" />
       <option name="USE_PATTERN" value="false" />
       <option name="PUREUNITTEST" value="true" />
@@ -331,14 +392,20 @@
       <option name="USE_KEYWORD" value="false" />
       <method />
     </configuration>
-    <list size="2">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in test_thermostat" />
       <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in test_heaterControl" />
+      <item index="2" class="java.lang.String" itemvalue="Python tests.Unittest TestHeaterControl.test_turn_on" />
+      <item index="3" class="java.lang.String" itemvalue="Python.heater" />
+      <item index="4" class="java.lang.String" itemvalue="Python tests.Unittest TestHeaterControl.test_dont_cycle_off_heater_too_quickly" />
     </list>
     <recent_temporary>
-      <list size="2">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python tests.Unittests in test_heaterControl" />
-        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittests in test_thermostat" />
+        <item index="1" class="java.lang.String" itemvalue="Python tests.Unittest TestHeaterControl.test_dont_cycle_off_heater_too_quickly" />
+        <item index="2" class="java.lang.String" itemvalue="Python.heater" />
+        <item index="3" class="java.lang.String" itemvalue="Python tests.Unittest TestHeaterControl.test_turn_on" />
+        <item index="4" class="java.lang.String" itemvalue="Python tests.Unittests in test_thermostat" />
       </list>
     </recent_temporary>
   </component>
@@ -356,35 +423,35 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="Unittests_in_test_heaterControl - 2016.02.15 at 19h 22m 50s.xml">
+    <history-entry file="Unittest_TestHeaterControl_test_dont_cycle_off_heater_too_quickly - 2016.02.15 at 19h 56m 07s.xml">
+      <configuration name="Unittest TestHeaterControl.test_dont_cycle_off_heater_too_quickly" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_TestHeaterControl_test_dont_cycle_off_heater_too_quickly - 2016.02.15 at 19h 58m 44s.xml">
+      <configuration name="Unittest TestHeaterControl.test_dont_cycle_off_heater_too_quickly" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_TestHeaterControl_test_turn_on - 2016.02.15 at 19h 48m 46s.xml">
+      <configuration name="Unittest TestHeaterControl.test_turn_on" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_TestHeaterControl_test_turn_on - 2016.02.15 at 19h 50m 36s.xml">
+      <configuration name="Unittest TestHeaterControl.test_turn_on" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_TestHeaterControl_test_turn_on - 2016.02.15 at 19h 51m 17s.xml">
+      <configuration name="Unittest TestHeaterControl.test_turn_on" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_TestHeaterControl_test_turn_on - 2016.02.15 at 19h 51m 50s.xml">
+      <configuration name="Unittest TestHeaterControl.test_turn_on" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittest_TestHeaterControl_test_turn_on - 2016.02.15 at 19h 52m 26s.xml">
+      <configuration name="Unittest TestHeaterControl.test_turn_on" configurationId="tests" />
+    </history-entry>
+    <history-entry file="Unittests_in_test_heaterControl - 2016.02.15 at 19h 52m 58s.xml">
       <configuration name="Unittests in test_heaterControl" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_heaterControl - 2016.02.15 at 19h 35m 50s.xml">
+    <history-entry file="Unittests_in_test_heaterControl - 2016.02.15 at 19h 55m 34s.xml">
       <configuration name="Unittests in test_heaterControl" configurationId="tests" />
     </history-entry>
-    <history-entry file="Unittests_in_test_thermostat - 2016.02.14 at 20h 44m 18s.xml">
-      <configuration name="Unittests in test_thermostat" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_thermostat - 2016.02.14 at 20h 44m 37s.xml">
-      <configuration name="Unittests in test_thermostat" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_thermostat - 2016.02.14 at 20h 46m 15s.xml">
-      <configuration name="Unittests in test_thermostat" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_thermostat - 2016.02.14 at 20h 47m 09s.xml">
-      <configuration name="Unittests in test_thermostat" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_thermostat - 2016.02.14 at 20h 48m 10s.xml">
-      <configuration name="Unittests in test_thermostat" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_thermostat - 2016.02.14 at 21h 08m 07s.xml">
-      <configuration name="Unittests in test_thermostat" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_thermostat - 2016.02.15 at 19h 21m 46s.xml">
-      <configuration name="Unittests in test_thermostat" configurationId="tests" />
-    </history-entry>
-    <history-entry file="Unittests_in_test_thermostat - 2016.02.15 at 19h 22m 10s.xml">
-      <configuration name="Unittests in test_thermostat" configurationId="tests" />
+    <history-entry file="Unittests_in_test_heaterControl - 2016.02.15 at 19h 58m 50s.xml">
+      <configuration name="Unittests in test_heaterControl" configurationId="tests" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -393,13 +460,14 @@
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5031348" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32863188" sideWeight="0.4968652" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32863188" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -426,32 +494,12 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/thermostat/thermostat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="28" column="0" selection-start-line="28" selection-start-column="0" selection-end-line="28" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/thermostat/test_thermostat.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/thermostat/thermostat.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="35" selection-start-line="14" selection-start-column="35" selection-end-line="14" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -483,22 +531,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/thermostat/test_heaterControl.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/thermostat/heater.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="2" column="0" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/thermostat/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -507,12 +539,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/thermostat/thermostat.py">
+    <entry file="file://$PROJECT_DIR$/thermostat/test_heaterControl.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.13392857">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="88" column="24" selection-start-line="88" selection-start-column="24" selection-end-line="88" selection-end-column="24" />
           <folding>
-            <element signature="e#0#19#0" expanded="true" />
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/thermostat/heater.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.73660713">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#14#0" expanded="true" />
           </folding>
         </state>
       </provider>

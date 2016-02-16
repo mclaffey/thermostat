@@ -1,8 +1,10 @@
 import random
+import logging
 from unittest import TestCase
 
 from heater import HeaterControl
 
+logging.basicConfig(level=logging.DEBUG)
 
 
 class TestClock(object):
@@ -69,3 +71,19 @@ class TestHeaterControl(TestCase):
         self.assertFalse(self.heater._intended_on)
         self.assertFalse(self.heater._actually_on)
 
+    def test_dont_cycle_on_heater_too_quickly(self):
+        # even though the heater starts off, if we explicitly set it to off, this will start
+        # the cycle protection
+        self.heater.set_to_on(False)
+        self.heater.iterate()
+        # advance 2 minutes
+        self.clock.advance(minutes=2)
+        # try to turn on, but heater won't allow it
+        self.heater.set_to_on(True)
+        self.assertTrue(self.heater._intended_on)
+        self.assertFalse(self.heater._actually_on)
+        # go the rest of the time so that heater can turn off
+        self.clock.advance(minutes=3)
+        self.heater.iterate()
+        self.assertTrue(self.heater._intended_on)
+        self.assertTrue(self.heater._actually_on)

@@ -18,8 +18,8 @@ class HeaterControl(object):
         self._actually_on = False
         self._logger = logging.getLogger(__name__)
         self.maximum_on_time = 60 * 60  # 1 hour
-        self.minimum_on_time = 5 * 50  # 5 minutes
-        self.minimum_off_time = 5 * 50  # 5 minutes
+        self.minimum_on_time = 5 * 60  # 5 minutes
+        self.minimum_off_time = 5 * 60  # 5 minutes
 
         if clock:
             self._clock = clock
@@ -54,6 +54,7 @@ class HeaterControl(object):
             if not self._actually_on:
                 self._turn_on_time = max(self._no_turn_on_before, self._clock.time())
                 self._turn_off_time = None
+                self._logger.debug("Set to turn on at: {}".format(self._turn_on_time))
 
         # turning off
         else:
@@ -62,13 +63,14 @@ class HeaterControl(object):
             if self._actually_on:
                 self._turn_on_time = None
                 self._turn_off_time = max(self._no_turn_off_before, self._clock.time())
+                self._logger.debug("Set to turn off at: {}".format(self._turn_off_time))
 
     def iterate(self):
 
         already_handled = False
 
         # if we passed the turn off time
-        if self._turn_off_time and self._turn_off_time < self._clock.time():
+        if self._turn_off_time is not None and self._turn_off_time <= self._clock.time():
             # if the time was set before the cycle protection, log message and push the time back
             if self._no_turn_off_before and self._no_turn_off_before > self._turn_off_time:
                 self._logger.warn(
@@ -88,7 +90,7 @@ class HeaterControl(object):
             already_handled = True
 
         # if we passed the turn on time
-        if self._turn_on_time and self._turn_on_time < self._clock.time():
+        if self._turn_on_time is not None and self._turn_on_time <= self._clock.time():
             if already_handled:
                 raise ThermostatException("Already handled, this probably shouldn't be happening")
             # if this would turn on before the cycle protection, log message and push the time back
@@ -110,7 +112,7 @@ class HeaterControl(object):
             already_handled = True
 
         # if we passed the maximum on time
-        if self._on_since and (self._clock.time() - self._on_since) > self.maximum_on_time:
+        if self._on_since is not None and (self._clock.time() - self._on_since) > self.maximum_on_time:
             if already_handled:
                 raise ThermostatException("Already handled, this probably shouldn't be happening")
             self._logger.warn("Reached maximum consecutive on time. Scheduling for shutdown.")
