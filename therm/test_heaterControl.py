@@ -2,7 +2,7 @@ import random
 import logging
 from unittest import TestCase
 
-from heater import HeaterControl
+from heater import HeaterCycleProtection
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -42,7 +42,7 @@ class TestClock(object):
 class TestHeaterControl(TestCase):
     def setUp(self):
         self.clock = TestClock()
-        self.heater = HeaterControl(self.clock)
+        self.heater = HeaterCycleProtection(self.clock)
 
     def test_turn_on(self):
         self.heater.set_to_on(True)

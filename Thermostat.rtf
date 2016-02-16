@@ -8,10 +8,11 @@
 \
 ----------------------------------------------------------------------------------------\
 1/26/2016 - first version\
-2/7/2016 - ?resuming with thermostat\
+2/7/2016 - resuming with thermostat\
+2/14/2016 - majority of coding HeaterControl and Thermostat\
+2/15/2016 - tests working for HeaterControl and Thermostat\
+LEFT OFF - refactoring HeaterCycleProtection (see end of document)\
 \
-\
-LEFT OFF: I created the test and need to finish the mockup classes\
 \
 \
 ----------------------------------------------------------------------------------------\
@@ -124,49 +125,14 @@ does turn heater on until it's been off for 20 minutes\
 \
 ----\
 \
-On - Turn on in 20 seconds. The 20 second delay is in case the user changes status again. Don't turn on before the cycle protection.\
-	# it's fine if the heater is already running based on auto settings, this will be harmlessly redundant\
-	# if self.no_turn_on_before is None, the other option is selected (i.e. not an exception)\
+LEFT OFF: \
 \
-Off - Wait 20 seconds\
-	# nearly the opposite of on mode\
+The tests were all passing.\
 \
-Auto\
-	if the heater is on\
-		if the temperature is below low threshold, stay on\
-		if the temperature is above low threshold, turn off as soon as possible\
-	if the heater is off\
-	 \
+I'm changing the "HeaterCycleProtection" to sit on top of AbstractHeater. The test code should use HeaterCycleProtection, which sits on top of the TestHeater. That will let me do the more elaborate cycle times and maximum on durations.\
 \
+Once I change that and get the tests passing again, I can move on. First get the real thermometer working. Then work on the hardware to get a LED simulator working.\
 \
-def check_thresholds(self):\
-	# record threshold crossings\
-	if self.threshold_low:\
-		# if below low threshold\
-		if self.thermometer.temperature < self.threshold_low:\
-			if self.crossed_below_low_threshold_at is None:\
-				self.crossed_below_low_threshold_at = self.clock.time()\
-				self._logger.debug("Exceeded low threshold");\
-		# if at or above low threshold\
-		else:\
-			if self.crossed_below_low_threshold_at is not None:\
-				self.crossed_below_low_threshold_at = None\
-				self._logger.debug("Within low threshold");\
-	if self.threshold_high:\
-		# if above high threshold\
-		if self.thermometer.temperature > self.threshold_high:\
-			if self.crossed_above_high_threshold_at is None:\
-				self.crossed_above_high_threshold_at = self.clock.time()\
-				self._logger.debug("Exceeded high threshold);\
-		# if at or below high threshold\
-		else:\
-			if self.crossed_above_high_threshold_at is not None:\
-				self.crossed_above_high_thresholdat = None\
-				self._logger.debug("Within high threshold")\
-\
-def iterate(self):\
-\
-	self.check_thresholds()\
 \
 \
 }

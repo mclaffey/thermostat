@@ -4,6 +4,7 @@ from unittest import TestCase
 
 from helpers import ThermostatException
 from thermostat import Thermostat
+from heater import HeaterCycleProtection
 from test_heaterControl import TestClock
 
 logging.basicConfig(level=logging.DEBUG)
@@ -187,53 +188,55 @@ class TestThermostat(TestCase):
         self.thermostat.iterate()
         self.assertFalse(self.heater.is_on())
 
-    def test_dont_cycle_off_heater_too_quickly(self):
-        self.helper_get_cold_to_trigger_heater()
-        # advance 1 minute, already warm enough, but don't cycle off heater yet
-        self.clock.advance(minutes=1)
-        self.thermometer.temperature = 70
-        self.thermostat.iterate()
-        # advance to just under cycle minimum time on, heater should still be on
-        self.clock.advance(minutes=3.9)
-        self.thermostat.iterate()
-        # advance beyond cycle minimum time on, heater should turn off
-        self.clock.advance(minutes=0.1)
-        self.heater.exception_if_turned_off = False
-        self.thermostat.iterate()
-        self.assertFalse(self.heater.is_on())
-
-    def test_dont_cycle_on_heater_too_quickly(self):
-        # the beginning of this test needs to trigger the heater and let things warm up
-        self.helper_get_cold_to_trigger_heater()
-        # advance and warm up
-        self.clock.advance(minutes=10)
-        self.thermometer.temperature = 70
-        self.heater.exception_if_turned_off = False
-        self.thermostat.iterate()
-        self.assertFalse(self.heater.is_on())
-        # the heater is off now, but throw exception if thermostat tries to turn if off again
-        self.heater.exception_if_turned_off = True
-        # now quickly get cold again, but don't turn on heater yet
-        self.clock.advance(minutes=1)
-        self.thermometer.temperature = 66
-        self.thermostat.iterate()
-        # advance to just inside cycle limit, still not on yet
-        self.clock.advance(minutes=3.9)
-        self.thermostat.iterate()
-        # advance to just outside of cycle limit, heater should kick on
-        self.clock.advance(minutes=0.1)
-        self.heater.exception_if_turned_on = False
-        self.thermostat.iterate()
-        self.assertTrue(self.heater.is_on())
+    # def test_dont_cycle_off_heater_too_quickly(self):
+    #     self.helper_get_cold_to_trigger_heater()
+    #     # advance 1 minute, already warm enough, but don't cycle off heater yet
+    #     self.clock.advance(minutes=1)
+    #     self.thermometer.temperature = 70
+    #     self.thermostat.iterate()
+    #     # advance to just under cycle minimum time on, heater should still be on
+    #     self.clock.advance(minutes=3.9)
+    #     self.thermostat.iterate()
+    #     # advance beyond cycle minimum time on, heater should turn off
+    #     self.clock.advance(minutes=0.1)
+    #     self.heater.exception_if_turned_off = False
+    #     self.thermostat.iterate()
+    #     self.assertFalse(self.heater.is_on())
+    #
+    # def test_dont_cycle_on_heater_too_quickly(self):
+    #     # the beginning of this test needs to trigger the heater and let things warm up
+    #     self.helper_get_cold_to_trigger_heater()
+    #     # advance and warm up
+    #     self.clock.advance(minutes=10)
+    #     self.thermometer.temperature = 70
+    #     self.heater.exception_if_turned_off = False
+    #     self.thermostat.iterate()
+    #     self.assertFalse(self.heater.is_on())
+    #     # the heater is off now, but throw exception if thermostat tries to turn if off again
+    #     self.heater.exception_if_turned_off = True
+    #     # now quickly get cold again, but don't turn on heater yet
+    #     self.clock.advance(minutes=1)
+    #     self.thermometer.temperature = 66
+    #     self.thermostat.iterate()
+    #     # advance to just inside cycle limit, still not on yet
+    #     self.clock.advance(minutes=3.9)
+    #     self.thermostat.iterate()
+    #     # advance to just outside of cycle limit, heater should kick on
+    #     self.clock.advance(minutes=0.1)
+    #     self.heater.exception_if_turned_on = False
+    #     self.thermostat.iterate()
+    #     self.assertTrue(self.heater.is_on())
 
     def test_dont_keep_heater_on_forever(self):
-        # maximum on for 60 minutes, even if not warm enough yet
-        self.helper_get_cold_to_trigger_heater()
-        # temperature is still too cool, advance to just before time limit
+        # use the real heater controller, not the test heater
+        self.heater = HeaterCycleProtection(self.clock)
+        self.thermostat = Thermostat(self.heater, self.thermometer, self.clock)
+        self.thermostat.set_mode('on')
+        # advance to just before time limit
         self.clock.advance(minutes=59)
         self.thermostat.iterate()
-        # advance past limit, heater should go off even though still cold
+        self.assertTrue(self.heater.is_on())
+        # advance past limit, heater should go off
         self.clock.advance(minutes=1)
-        self.heater.exception_if_turned_off = False
         self.thermostat.iterate()
         self.assertFalse(self.heater.is_on())

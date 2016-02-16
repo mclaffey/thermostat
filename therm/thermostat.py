@@ -1,7 +1,7 @@
 import logging
 
 from helpers import ThermostatException, Clock
-from heater import HeaterControl
+from heater import HeaterCycleProtection
 
 
 class Thermostat(object):
@@ -19,7 +19,7 @@ class Thermostat(object):
     crossed_above_high_threshold_at = None
     threshold_time_delay = 5 * 60 # 5 minutes
 
-    def __init__(self, heater=HeaterControl(), thermometer=None, clock=Clock()):
+    def __init__(self, heater=HeaterCycleProtection(), thermometer=None, clock=Clock()):
         self.heater = heater
         self.clock = clock
         self.thermometer = thermometer
