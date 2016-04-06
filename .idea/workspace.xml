@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6034e1ab-80b9-48c8-8b59-dbe67e8ef618" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Thermostat.rtf" afterPath="$PROJECT_DIR$/Thermostat.rtf" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/therm/__init__.py" afterPath="$PROJECT_DIR$/therm/__init__.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/therm/heater.py" afterPath="$PROJECT_DIR$/therm/heater.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/therm/test_heaterControl.py" afterPath="$PROJECT_DIR$/therm/test_heaterControl.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/therm/test_thermostat.py" afterPath="$PROJECT_DIR$/therm/test_thermostat.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/therm/thermostat.py" afterPath="$PROJECT_DIR$/therm/thermostat.py" />
-    </list>
+    <list default="true" id="6034e1ab-80b9-48c8-8b59-dbe67e8ef618" name="Default" comment="" />
     <ignored path="thermostat.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
