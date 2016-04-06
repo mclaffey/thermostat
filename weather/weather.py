@@ -31,20 +31,27 @@ import sys
 import pandas as pd
 import datetime
 import sqlite3
+import os
+
 
 def query_and_save(db_path, verbose=False):
 	"""Query the web and add new records to database
 	"""
 	db = sqlite3.connect(db_path)
-	data1 = query_weather_web()
+	data1 = query_weather_web(verbose)
 	data2 = clean_weather_table(data1)
 	result = append_records(db, data2, verbose)
 	return result
 
-def query_weather_web():
+def query_weather_web(verbose=False):
 	"""Query the website for the table of weather data
 	"""
+	if verbose:
+		print "Querying website...",
+		sys.stdout.flush()
 	website_tables = pd.read_html("http://w1.weather.gov/obhistory/KCLT.html")
+	if verbose:
+		print "Done"
 
 	weather_table = website_tables[3].copy()
 	return weather_table
@@ -123,6 +130,9 @@ def append_records(db, data, verbose=False):
 	"""
 	added = 0
 	duplicated = 0
+	if verbose:
+		print "Adding records...",
+		sys.stdout.flush()
 	for i,row in data.iterrows():
 	    row = row.to_frame().T
 	    row.set_index('datetime', inplace=True)
@@ -131,8 +141,8 @@ def append_records(db, data, verbose=False):
 	        added += 1
 	    except sqlite3.IntegrityError:
 	        duplicated += 1        
-
 	db.commit()
+	
 	if verbose:
 		print "{} added, {} already existed".format(added, duplicated)
 	return (added, duplicated)
@@ -160,6 +170,18 @@ precipitation_3hr
 precipitation_6hr
 """.strip().split("\n")
 
+
 if __name__ == '__main__':
-	query_and_save('weather.db', verbose=True)
+
+	# get database path
+	db_path = 'weather.db'
+	if len(sys.argv) > 1:
+		db_path = sys.argv[1]
+	if os.path.exists(db_path):
+		print "Using database path: {}".format(db_path)
+	else:
+		sys.exit("Database file does not exist: {}".format(db_path))
+
+	# run
+	query_and_save(db_path, verbose=True)
 
