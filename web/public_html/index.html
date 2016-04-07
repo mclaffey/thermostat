@@ -36,6 +36,26 @@ body {
     opacity: 0.2;
 }
 
+div.tooltip { 
+    position: absolute;     
+    text-align: center;     
+    width: 120px;          
+    height: 28px;         
+    padding: 2px;       
+    font: 12px sans-serif;    
+    border: 0px;    
+    border-radius: 8px;     
+    pointer-events: none;     
+}
+
+div.tooltip.room { 
+    background: lightsteelblue; 
+}
+
+div.tooltip.weather { 
+    background: green; 
+}
+
 </style>
 <body>
 <script src="//d3js.org/d3.v3.min.js"></script>
@@ -46,6 +66,7 @@ var margin = {top: 20, right: 20, bottom: 30, left: 50},
     height = 500 - margin.top - margin.bottom;
 
 var formatDate = d3.time.format("%Y-%m-%d %H:%M:%S");
+var formatFriendlyDate = d3.time.format("%I:%M %p");
 
 var x = d3.time.scale()
     .range([0, width]);
@@ -72,6 +93,15 @@ var yAxis = d3.svg.axis()
 var line = d3.svg.line()
     .x(function(d) { return x(d.date); })
     .y(function(d) { return y(d.temp); })
+
+// Define the div for the tooltip
+var room_tooltips = d3.select("body").append("div") 
+    .attr("class", "tooltip room")       
+    .style("opacity", 0);
+
+var weather_tooltips = d3.select("body").append("div") 
+    .attr("class", "tooltip weather")       
+    .style("opacity", 0);
 
 var svg = d3.select("body").append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -104,7 +134,29 @@ d3.tsv("room.tsv", type, function(error, data) {
       .attr("class", "line room")
       .attr("d", line);
 
+  // Add the tool tips
+  svg.selectAll("dot")  
+      .data(data)
+  .enter().append("circle")               
+      .attr("r", 5)
+      .style("opacity", 0)
+      .attr("cx", function(d) { return x(d.date); })     
+      .attr("cy", function(d) { return y(d.temp); })   
+      .on("mouseover", function(d) {    
+          room_tooltips.transition()    
+              .duration(200)    
+              .style("opacity", .9);    
+          room_tooltips .html(d.temp.toFixed(1) + " F<br/>" + formatFriendlyDate(d.date))
+              .style("left", (d3.event.pageX) + "px")   
+              .style("top", (d3.event.pageY - 28) + "px");  
+          })
+      .on("mouseout", function(d) {   
+          room_tooltips.transition()    
+              .duration(500)    
+              .style("opacity", 0); 
       });
+
+});
 
 d3.tsv("weather.tsv", type, function(error, data) {
   if (error) throw error;
@@ -114,7 +166,28 @@ d3.tsv("weather.tsv", type, function(error, data) {
       .attr("class", "line weather")
       .attr("d", line);
 
+  // Add the tool tips
+  svg.selectAll("dot")  
+      .data(data)
+  .enter().append("circle")               
+      .attr("r", 5)
+      .style("opacity", 0)
+      .attr("cx", function(d) { return x(d.date); })     
+      .attr("cy", function(d) { return y(d.temp); })   
+      .on("mouseover", function(d) {    
+          weather_tooltips.transition()    
+              .duration(200)    
+              .style("opacity", .9);    
+          weather_tooltips .html(d.temp.toFixed(1) + " F<br/>" + formatFriendlyDate(d.date))
+              .style("left", (d3.event.pageX) + "px")   
+              .style("top", (d3.event.pageY - 28) + "px");  
+          })
+      .on("mouseout", function(d) {   
+          weather_tooltips.transition()    
+              .duration(500)    
+              .style("opacity", 0); 
       });
+  });
 
 function type(d) {
   d.date = formatDate.parse(d.date);
