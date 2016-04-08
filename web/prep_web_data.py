@@ -27,3 +27,4 @@ weather.to_csv("public_html/weather.tsv", sep="\t", index=False)
 db_forecast = sqlite3.connect("../data/forecast.db")
 forecast = pd.read_sql("SELECT forecast_datetime as date, temperature as temp FROM forecasts WHERE is_latest=1 ORDER BY forecast_datetime", db_forecast)
 forecast.to_csv("public_html/forecast.tsv", sep="\t", index=False)
+
