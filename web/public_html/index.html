@@ -32,6 +32,11 @@ body {
   stroke-width: 3px;
 }
 
+.forecast {
+  stroke: gray;
+  stroke-width: 5px;
+}
+
 .tick line{
     opacity: 0.2;
 }
@@ -110,9 +115,14 @@ var svg = d3.select("body").append("svg")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 d3.tsv("room.tsv", type, function(error, data) {
+})
+
+d3.tsv("room.tsv", type, function(error, data) {
   if (error) throw error;
 
-  x.domain(d3.extent(data, function(d) { return d.date; }));
+  // x.domain(d3.extent(data, function(d) { return d.date; }));
+  x.domain([d3.time.format("%Y-%m-%d").parse("2016-04-01"),
+            d3.time.format("%Y-%m-%d").parse("2016-04-09")]);
 
   svg.append("g")
       .attr("class", "x axis")
@@ -188,6 +198,15 @@ d3.tsv("weather.tsv", type, function(error, data) {
               .style("opacity", 0); 
       });
   });
+
+d3.tsv("forecast.tsv", type, function(error, data) {
+  if (error) throw error;
+
+  svg.append("path")
+      .datum(data)
+      .attr("class", "line forecast")
+      .attr("d", line);
+});
 
 function type(d) {
   d.date = formatDate.parse(d.date);
